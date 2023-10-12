@@ -6,23 +6,27 @@ const App = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    projectFirestore
-      .collection('movies')
-      .get()
-      .then((snapshot) => {
+    const unsubscribe = projectFirestore.collection('movies').onSnapshot(
+      (snapshot) => {
         if (snapshot.empty) {
           setError('No films to show');
+          setData([]);
         } else {
           let result = [];
           snapshot.docs.forEach((oneMovie) => {
             result.push({ id: oneMovie.id, ...oneMovie.data() });
           });
           setData(result);
+          setError('');
         }
-      })
-      .catch((err) => {
+      },
+      (err) => {
         setError(err.message);
-      });
+      }
+    );
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const deleteMovie = (id) => {
