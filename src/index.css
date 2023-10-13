@@ -20,4 +20,45 @@ body {
   width: 400px;
   padding: 5px 10px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.one-movie button {
+  margin-right: 10px;
+  font-size: 16px;
+  background-color: red;
+  color: rgba(255, 255, 255, 0.959);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form input[type='submit'] {
+  background-color: #e50914;
+  color: #e5e5e5;
+  border: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.input {
+  font-size: 16px;
+  margin-bottom: 10px;
+  background-color: #141414;
+  border: 2px solid #e5e5e5;
+  padding: 3px 10px;
+  color: #e5e5e5;
+}
+
+.input::placeholder {
+  color: #848383;
 }
